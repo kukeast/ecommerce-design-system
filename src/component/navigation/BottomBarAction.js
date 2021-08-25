@@ -7,6 +7,7 @@ const Wrapper = styled.div`
     flex: 1;
     display: inline-block;
     text-align: center;
+    cursor: pointer;
     ${ props => props.active ? css`
         svg{
             fill: ${props => props.theme.primary};

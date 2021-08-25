@@ -1,13 +1,14 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled, {css} from 'styled-components'
 import {gray} from 'open-color'
+import Tab from "./Tab"
 
-const Wrapper = styled.div`
+const TabList = styled.div`
     display: flex;
     overflow: scroll;
 
     ${props => props.fit && css`
-        p{
+        div{
             flex: 1;
         }
     `}
@@ -17,13 +18,32 @@ const Wrapper = styled.div`
     }
 `
 
-
-function Tabs ({ fit, children }) {
+function Tabs ({ fit, tabs }) {
+    const [currentTab, setCurrentTab] = useState(0);
     return(
-        <Wrapper fit={fit}>
-            {children}
-        </Wrapper>
+        <>
+            <TabList fit={fit}>
+                {tabs.map(tab=>(
+                    <Tab 
+                        key={tab.index}
+                        label={tab.label}
+                        selected={tab.index === currentTab && true}
+                        onClick={() => setCurrentTab(tab.index)}
+                    />
+                ))}
+            </TabList>
+            <div>{tabs[currentTab].contents}</div>
+        </>
     )
 }
 
-export default Tabs
+Tabs.defaultProps={
+    fit: false,
+    tabs: [{
+        label: 'Tab1',
+        index: 0,
+        contents: 'contents',
+    }]
+}
+
+export default React.memo(Tabs)

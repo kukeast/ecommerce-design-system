@@ -2,6 +2,7 @@ import React from 'react'
 import styled, {css} from 'styled-components'
 import {gray, red, black} from 'open-color'
 import { Icon16 } from '../icon/Icon'
+import Option from "./Option"
 
 
 const Wrapper = styled.div`
@@ -50,7 +51,8 @@ const SelectElem = styled.select`
     z-index: 1;
 
 `
-function Select ({ children, name, disabled, error, defaultValue, onChange, ...rest }) {
+function Select ({ options, name, disabled, error, onChange, ...rest }) {
+    const defaultValue = options.filter(option => option.defaultValue)[0].value
     return(
         <Wrapper disabled={disabled} error={error}>
             <SelectElem
@@ -60,7 +62,14 @@ function Select ({ children, name, disabled, error, defaultValue, onChange, ...r
                 onChange={onChange}
                 {...rest}
             >
-                {children}
+                {options.map((option, index)=>(
+                    <Option
+                        key={index}
+                        value={option.value}
+                        label={option.label}
+                        disabled={option.defaultValue ? true : false}
+                    />
+                ))}
             </SelectElem>
             <Icon16
                 width="16"
@@ -75,7 +84,12 @@ function Select ({ children, name, disabled, error, defaultValue, onChange, ...r
 Select.defaultProps = {
     name : "Select", 
     disabled : false, 
-    error : false
+    error : false,
+    options: [{
+        value: 'value',
+        label: 'option',
+        defaultValue: false,
+    }],
 }
 
 export default React.memo(Select)

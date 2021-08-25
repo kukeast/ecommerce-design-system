@@ -8,9 +8,11 @@ const TabElem = styled.div`
     line-height: 150%;
     text-align: center;
     color: ${gray[6]};
+    
     margin: 0;
     padding: 1rem 0.8rem;
     cursor: pointer;
+
     ${props => props.selected && css`
         font-weight: 500;
         border-bottom: 0.2rem solid ${props => props.theme.primary};
@@ -34,4 +36,9 @@ function Tab ({label, selected, onClick, ...rest}) {
     )
 }
 
-export default Tab
+Tab.defaultProps={
+    label: 'Tab',
+    selected: false,
+}
+
+export default React.memo(Tab)

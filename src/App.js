@@ -14,14 +14,10 @@ import Form from "./component/inputs/Form"
 import TextField from "./component/inputs/TextField"
 import TextArea from "./component/inputs/TextArea"
 import Select from "./component/inputs/Select"
-import Option from "./component/inputs/Option"
 import GlobalFonts from "./constants/font/font"
 import BottomBar from "./component/navigation/BottomBar"
-import BottomBarAction from "./component/navigation/BottomBarAction"
 import Anchor from "./component/navigation/Anchor"
 import Tabs from "./component/navigation/Tabs"
-import TabPanel from "./component/navigation/TabPanel"
-import Tab from "./component/navigation/Tab"
 
 const Wrapper = styled.div`
     width: 100%;
@@ -51,19 +47,51 @@ function App () {
     const [activeStar, setActiveStar] = useState(3)
     const stars = [1,2,3,4,5]
     const [toggle, setToggle] = useState("false")
-    const [currentTab, setCurrentTab] = useState(0);
+    const bottomBarActions = [
+        {
+            label: "Home",
+            icon: "IcoStar",
+        },
+        {
+            label: "Home",
+            icon: "IcoStar",
+        },
+        {
+            label: "Home",
+            icon: "IcoStar",
+        },
+    ]
+    const options =[
+        {
+            value: 'value1',
+            label: 'placeholder',
+            defaultValue: true,
+        },
+        {
+            value: 'value2',
+            label: 'label2',
+        },
+        {
+            value: 'value3',
+            label: 'label3',
+        }
+    ]
+
     const tabs = [
         {
             label: 'Tab1',
             index: 0,
+            contents: 'tab1',
         },
         {
             label: 'Tab2',
             index: 1,
+            contents: 'Tab22',
         },
         {
             label: 'Tab3',
             index: 2,
+            contents: '3333',
         }
     ]
     return(
@@ -216,50 +244,18 @@ function App () {
             <Wrapper>
                 <Title>Select</Title>
                 <Form label="Default">
-                    <Select name="name" onChange={onon} defaultValue="">
-                        <Option value="" label="Placeholder" disabled/>
-                        <Option value="aoao" label="Option1"/>
-                        <Option value="aoao" label="Option2"/>
-                        <Option value="aoao" label="Option3"/>
-                        <Option value="aoao" label="Option4"/>
-                        <Option value="aoao" label="Option5"/>
-                    </Select>
+                    <Select name="name" onChange={onon} options={options}/>
                 </Form>
                 <Form label="Disabled">
-                    <Select name="name" disabled>
-                        <Option value="aoao" label="Option1"/>
-                        <Option value="aoao" label="Option2"/>
-                        <Option value="aoao" label="Option3"/>
-                        <Option value="aoao" label="Option4"/>
-                        <Option value="aoao" label="Option5"/>
-                    </Select>
+                    <Select name="name" disabled options={options}/>
                 </Form>
                 <Form label="Error">
-                    <Select name="name" error>
-                        <Option value="aoao" label="Option1"/>
-                        <Option value="aoao" label="Option2"/>
-                        <Option value="aoao" label="Option3"/>
-                        <Option value="aoao" label="Option4"/>
-                        <Option value="aoao" label="Option5"/>
-                    </Select>
+                    <Select name="name" error options={options}/>
                 </Form>
             </Wrapper>
             <Wrapper>
                 <Title>BottomBar</Title>
-                <BottomBar>
-                    <BottomBarAction label="Home" icon="IcoStar" active/>
-                    <BottomBarAction label="Home" icon="IcoStar"/>
-                    <BottomBarAction label="Home" icon="IcoStar"/>
-                    <BottomBarAction label="Home" icon="IcoStar"/>
-                </BottomBar>
-            </Wrapper>
-            <Wrapper>
-                <BottomBar>
-                    <BottomBarAction icon="IcoStar" active/>
-                    <BottomBarAction icon="IcoStar"/>
-                    <BottomBarAction icon="IcoStar"/>
-                    <BottomBarAction icon="IcoStar"/>
-                </BottomBar>
+                <BottomBar bottomBarActions={bottomBarActions} defaultSeleted={0}/>
             </Wrapper>
             <Wrapper>
                 <Title>Anchor</Title>
@@ -267,24 +263,10 @@ function App () {
             </Wrapper>
             <Wrapper>
                 <Title>Tabs</Title>
-                <Tabs>
-                    {tabs.map(tab=>(
-                        <Tab 
-                            key={tab.index}
-                            label={tab.label}
-                            selected={tab.index === currentTab && true}
-                            onClick={() => setCurrentTab(tab.index)}
-                        />
-                    ))}
-                </Tabs>
-                <TabPanel index={0}>Tab1</TabPanel>
-                <TabPanel index={1}>Tab2</TabPanel>
-                <TabPanel index={2}>Tab3</TabPanel>
+                <Tabs tabs={tabs}/>
             </Wrapper>
             <Wrapper>
-                <Tabs fit>
-                
-                </Tabs>
+                <Tabs tabs={tabs} fit={true}/>
             </Wrapper>
         </ThemeProvider>
     )
