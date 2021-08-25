@@ -18,6 +18,7 @@ import GlobalFonts from "./constants/font/font"
 import BottomBar from "./component/navigation/BottomBar"
 import Anchor from "./component/navigation/Anchor"
 import Tabs from "./component/navigation/Tabs"
+import Accordion from "./component/surfaces/Accordion"
 
 const Wrapper = styled.div`
     width: 100%;
@@ -97,6 +98,15 @@ function App () {
     return(
         <ThemeProvider theme={theme}>
             <GlobalFonts/>
+            <Wrapper>
+                <Title>Accordion</Title>
+                <Accordion label='Accordion'>
+                    <p>내용임</p>
+                </Accordion>
+                <Accordion label='Accordion2' defaultOpened={true}>
+                    <p>내용임1</p>
+                </Accordion>
+            </Wrapper>
             <Wrapper>
                 <Title>Button Size</Title>
                 <Button size="large">Large</Button>

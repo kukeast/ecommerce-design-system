@@ -76,7 +76,7 @@ const colorStyles = css`
                 background: ${darken(0.05, background)};
             }
             &:disabled{
-                background: ${gray[1]};
+                background: ${gray[2]};
                 color: ${white};
             }
             ${props => props.outline && css`
@@ -88,8 +88,8 @@ const colorStyles = css`
                 }
                 &:disabled{
                     background: ${white};
-                    border: 0.1rem solid ${gray[2]};
-                    color: ${gray[2]};
+                    border: 0.1rem solid ${gray[3]};
+                    color: ${gray[3]};
                 }
             `}
         `
