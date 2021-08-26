@@ -5,6 +5,7 @@ import {gray} from 'open-color'
 const AnchorElem = styled.a`
     font-size: 1.5rem;
     color: ${gray[6]};
+    -webkit-tap-highlight-color: transparent;
     :active{
         color: ${props => props.theme.primary};
     }

@@ -29,6 +29,7 @@ const ChipElem = styled.div`
         margin-left: 0.8rem;
     }
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 `
 
 function Chip ({label, selected, onClick, ...rest}) {

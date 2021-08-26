@@ -5,6 +5,7 @@ import {Icon24} from '../icon/Icon'
 
 const StarElem = styled.span`
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
     & + & {
         margin-left: 0.4rem;
     }

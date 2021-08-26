@@ -8,6 +8,7 @@ const Wrapper = styled.div`
     display: inline-block;
     text-align: center;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
     ${ props => props.active ? css`
         svg{
             fill: ${props => props.theme.primary};

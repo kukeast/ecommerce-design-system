@@ -56,7 +56,7 @@ const Label = styled.label`
     font-size: 1.5rem;
     font-weight: 300;
     color: ${black};
-
+    -webkit-tap-highlight-color: transparent;
     cursor: pointer;
 `
 

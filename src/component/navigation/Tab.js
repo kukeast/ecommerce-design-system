@@ -12,7 +12,7 @@ const TabElem = styled.div`
     margin: 0;
     padding: 1rem 0.8rem;
     cursor: pointer;
-
+    -webkit-tap-highlight-color: transparent;
     ${props => props.selected && css`
         font-weight: 500;
         border-bottom: 0.2rem solid ${props => props.theme.primary};

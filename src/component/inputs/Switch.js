@@ -13,6 +13,7 @@ const SwicthElem = styled.div`
 
     transition: 0.3s;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
     ${props => props.active ? css`
         background-color: ${props.theme.primary};
         div{

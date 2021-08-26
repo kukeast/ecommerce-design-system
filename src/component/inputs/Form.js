@@ -7,6 +7,7 @@ const FormElem = styled.form`
         margin-top: 2.4rem;
     }
     font-size: 1.4rem;
+    -webkit-tap-highlight-color: transparent;
 `
 
 const Label = styled.label`
