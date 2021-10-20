@@ -32,7 +32,7 @@ function Tabs ({ fit, tabs }) {
                     />
                 ))}
             </TabList>
-            <div>{tabs[currentTab].contents}</div>
+            {tabs[currentTab].contents}
         </>
     )
 }
